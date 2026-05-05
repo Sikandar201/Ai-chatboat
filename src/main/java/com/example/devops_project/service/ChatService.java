@@ -59,7 +59,7 @@ public class ChatService {
             return "No response from Gemini.";
         } catch (Exception e) {
             e.printStackTrace();
-            return "Error calling Gemini API: mittal ki ma ki chut " + e.getMessage();
+            return "Error calling Gemini API:  " + e.getMessage();
         }
     }
 }
