@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Status</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        #test-output {
+            background-color: #1e1e1e;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            height: 60vh;
+            overflow-y: auto;
+            margin-top: 20px;
+            border: 1px solid #333;
+        }
+        .header-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="header-actions">
+            <h1>Test Execution Status</h1>
+            <div>
+                <a href="/" style="color: var(--primary-color); margin-right: 20px; text-decoration: none;">Back to Chat</a>
+                <button id="run-tests-btn">Run Tests</button>
+            </div>
+        </div>
+        <div id="test-output">Click "Run Tests" to start...</div>
+    </div>
+
+    <script>
+        const runBtn = document.getElementById('run-tests-btn');
+        const outputDiv = document.getElementById('test-output');
+
+        runBtn.addEventListener('click', async () => {
+            runBtn.disabled = true;
+            runBtn.textContent = 'Running...';
+            outputDiv.textContent = 'Executing "mvn test"... please wait.';
+            
+            try {
+                const response = await fetch('/api/tests/run');
+                const data = await response.text();
+                outputDiv.textContent = data;
+            } catch (error) {
+                outputDiv.textContent = 'Error: ' + error.message;
+            } finally {
+                runBtn.disabled = false;
+                runBtn.textContent = 'Run Tests';
+            }
+        });
+    </script>
+</body>
+</html>
