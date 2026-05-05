@@ -13,7 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>devops_project</name>
-	<description>devops project CA2 int331</description>
+	<description>devops project CA2 INT332</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -73,8 +73,22 @@
     <groupId>com.google.genai</groupId>
     <artifactId>google-genai</artifactId>
     <version>1.0.0</version>
-  </dependency> 
-  
+  </dependency>
+
+	<!-- Selenium WebDriver dependencies -->
+	<dependency>
+		<groupId>org.seleniumhq.selenium</groupId>
+		<artifactId>selenium-java</artifactId>
+		<version>4.16.1</version>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>io.github.bonigarcia</groupId>
+		<artifactId>webdrivermanager</artifactId>
+		<version>5.6.3</version>
+		<scope>test</scope>
+	</dependency>
+
 </dependencies>
 
 	<build>
